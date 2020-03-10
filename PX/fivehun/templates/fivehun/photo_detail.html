@@ -1,0 +1,27 @@
+{% extends 'fivehun/base_photo.html' %}
+
+{% block title %}
+    {{ post.title }} - {{ block.super }}
+{% endblock %}
+
+
+{% block content %}
+<h1 class="mt-5" xmlns="http://www.w3.org/1999/html">
+        {{ post.title }}
+    </h1>
+    <p>
+        {{ post.body }}
+    </p>
+
+
+    {% for comment in comments %}
+        {{ comment.body }}
+        {{ comment.date_pub }}
+    {% endfor %}
+    <form action="" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit"> Send </button>
+
+    </form>
+{% endblock %}
